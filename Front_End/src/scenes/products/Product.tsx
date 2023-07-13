@@ -14,7 +14,7 @@ import Header from "../../components/Header/Header";
 import FetchLate from "../../components/fetchLate/FetchLate";
 import { useDispatch } from "react-redux";
 import { setUserProducts } from "../../features/data/dataSlice";
-import { useFetchProducts } from "../../hooks/useFetchProduct";
+import { useFetch } from "../../hooks/useFetch.tsx";
 const Product = ({
     _id,
     name,
@@ -86,7 +86,7 @@ const Product = ({
 };
 const Products = () => {
     const dispatch = useDispatch();
-    const { data, isLoading, isError } = useFetchProducts(
+    const { data, isLoading, isError } = useFetch(
         "Products",
         "client/products"
     );
@@ -107,7 +107,6 @@ const Products = () => {
         <Box p={"2rem"}>
             <Header title="PRODUCTS" subtitle="See your list of products" />
             <Box
-                mt={"1.25rem"}
                 display={"grid"}
                 gridTemplateColumns={"repeat(auto-fill, minmax(20rem , 1fr))"}
                 justifyContent={"space-between"}

@@ -55,4 +55,5 @@ interface userState {
     id: string;
     userData: userData | null;
     userProducts: userProducts[] | null;
+    customers: userData[] | null;
 }

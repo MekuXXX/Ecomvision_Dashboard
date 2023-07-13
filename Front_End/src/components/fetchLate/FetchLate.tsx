@@ -8,7 +8,11 @@ interface propsState {
 }
 const FetchLate = ({ isLoading, isError, text }: propsState) => {
     if (isError)
-        return <Typography variant="h1">Error in fetching {text}</Typography>;
+        return (
+            <Typography variant="h1" p={"2rem"}>
+                Error in fetching {text}
+            </Typography>
+        );
     if (isLoading)
         return (
             <Box

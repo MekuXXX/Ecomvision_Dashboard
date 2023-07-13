@@ -6,7 +6,7 @@ interface propsState {
 const Header = ({ title, subtitle }: propsState) => {
     const theme = useTheme();
     return (
-        <Box>
+        <Box mb={"2rem"}>
             <Typography
                 variant="h2"
                 color={theme.palette.secondary[100]}

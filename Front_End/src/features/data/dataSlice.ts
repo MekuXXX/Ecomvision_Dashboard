@@ -5,6 +5,7 @@ const initialState: userState = {
     id: "63701cc1f03239b7f700000e",
     userData: null,
     userProducts: null,
+    customers: null,
 };
 
 const userSlice = createSlice({
@@ -20,8 +21,12 @@ const userSlice = createSlice({
         setUserProducts: (state, action: PayloadAction<userProducts[]>) => {
             state.userProducts = action.payload;
         },
+        setCustomers: (state, action: PayloadAction<userData[]>) => {
+            state.customers = action.payload;
+        },
     },
 });
 
-export const { setUserId, setUserData, setUserProducts } = userSlice.actions;
+export const { setUserId, setUserData, setUserProducts, setCustomers } =
+    userSlice.actions;
 export default userSlice.reducer;

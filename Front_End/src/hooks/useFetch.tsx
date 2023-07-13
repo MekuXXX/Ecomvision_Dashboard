@@ -3,7 +3,7 @@ import axios from "axios";
 export const fetchProducts = (path: string) =>
     axios.get(`${import.meta.env.VITE_REACT_APP_BASE_URL}/${path}`);
 
-export const useFetchProducts = (name: string | [], path: string) => {
+export const useFetch = (name: string | [], path: string) => {
     return useQuery(
         [name],
         () => {

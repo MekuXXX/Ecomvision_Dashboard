@@ -1,5 +1,7 @@
 const { asyncWrapper } = require('../middleware');
-const { Products, ProductsStat } = require('../models');
+const { Products, ProductsStat, User } = require('../models');
+const { StatusCodes } = require('http-status-codes');
+
 const getProducts = asyncWrapper(async (req, res) => {
     const products = await Products.find();
     const productsWithStats = await Promise.all(
@@ -8,7 +10,12 @@ const getProducts = asyncWrapper(async (req, res) => {
             return { ...product._doc, stat };
         })
     );
-    res.status(200).json(productsWithStats);
+    res.status(StatusCodes.OK).json(productsWithStats);
 });
 
-module.exports = { getProducts };
+const getCustomers = asyncWrapper(async (req, res) => {
+    const customers = await User.find({ role: 'user' }).select('-password');
+    res.status(StatusCodes.OK).json(customers);
+});
+
+module.exports = { getProducts, getCustomers };
