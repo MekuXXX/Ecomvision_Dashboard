@@ -4,12 +4,14 @@ const express = require('express');
 const connectDB = require('./db/connectDB');
 const app = express();
 const PORT = process.env.PORT || 3002;
-const { User, Products, ProductsStat } = require('./models');
-const { dataUser, dataProduct, dataProductStat } = require('./data');
+const { User, Products, ProductsStat, Transactions } = require('./models');
+const {
+    dataUser,
+    dataProduct,
+    dataProductStat,
+    dataTransaction,
+} = require('./data');
 
-app.get('/', (req, res) => {
-    res.json(dataProductStat[0]);
-});
 // Start server
 const startServer = async (URI) => {
     try {
@@ -21,6 +23,7 @@ const startServer = async (URI) => {
         User.insertMany(dataUser);
         Products.insertMany(dataProduct);
         ProductsStat.insertMany(dataProductStat);
+        Transactions.insertMany(dataTransaction);
     } catch (err) {
         console.log(`There wase error in starting server`);
     }

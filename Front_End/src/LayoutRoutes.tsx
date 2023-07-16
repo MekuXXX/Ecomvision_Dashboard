@@ -3,6 +3,7 @@ import Dashboard from "./scenes/dashboard/Dashboard";
 import Layout from "./scenes/layout/Layout";
 import Products from "./scenes/products/Product";
 import Customers from "./scenes/customers/Customers";
+import Transactions from "./scenes/transactions/Transactions";
 
 const LayoutRoutes = () => {
     return (
@@ -15,6 +16,7 @@ const LayoutRoutes = () => {
                 <Route path="/dashboard" element={<Dashboard />} />
                 <Route path="/products" element={<Products />} />
                 <Route path="/customers" element={<Customers />} />
+                <Route path="/transactions" element={<Transactions />} />
             </Route>
         </Routes>
     );

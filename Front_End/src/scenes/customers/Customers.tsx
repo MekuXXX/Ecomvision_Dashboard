@@ -96,7 +96,7 @@ function Customers() {
                     loading={isLoading || !data?.data}
                     rows={data.data || []}
                     columns={columns as GridColDef<typeof columns>[]}
-                    getRowId={(row) => row._id}
+                    getRowId={(row: { _id: number }) => row._id}
                 />
             </Box>
         </Box>

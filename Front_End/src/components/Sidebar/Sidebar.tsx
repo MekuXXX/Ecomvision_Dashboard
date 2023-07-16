@@ -59,6 +59,10 @@ const navItems: NavItemState[] = [
         icon: <Groups2Outlined />,
     },
     {
+        text: "Transactions",
+        icon: <ReceiptLongOutlined />,
+    },
+    {
         text: "Geography",
         icon: <PublicOutlined />,
     },

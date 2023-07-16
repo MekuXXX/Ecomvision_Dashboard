@@ -94,7 +94,6 @@ const Products = () => {
     useEffect(() => {
         dispatch(setUserProducts(data?.data));
     }, [data, dispatch]);
-    console.log(data?.data[0].stat[0].createdAt);
     if (isLoading || isError)
         return (
             <FetchLate
@@ -124,6 +123,7 @@ const Products = () => {
                         stat,
                     }: userProducts) => (
                         <Product
+                            key={_id}
                             _id={_id}
                             name={name}
                             rating={rating}

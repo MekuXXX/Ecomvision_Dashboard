@@ -51,9 +51,19 @@ interface userProducts {
         }
     ];
 }
+interface transactions {
+    _id: string;
+    userId: string;
+    cost: string;
+    products: string[];
+    __v: number;
+    createdAt: string;
+    updatedAt: string;
+}
 interface userState {
     id: string;
     userData: userData | null;
     userProducts: userProducts[] | null;
     customers: userData[] | null;
+    transactions: transactions[] | null;
 }

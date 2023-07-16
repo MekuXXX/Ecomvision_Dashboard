@@ -6,6 +6,7 @@ const initialState: userState = {
     userData: null,
     userProducts: null,
     customers: null,
+    transactions: null,
 };
 
 const userSlice = createSlice({
@@ -24,9 +25,17 @@ const userSlice = createSlice({
         setCustomers: (state, action: PayloadAction<userData[]>) => {
             state.customers = action.payload;
         },
+        setTransactions: (state, action: PayloadAction<transactions[]>) => {
+            state.transactions = action.payload;
+        },
     },
 });
 
-export const { setUserId, setUserData, setUserProducts, setCustomers } =
-    userSlice.actions;
+export const {
+    setUserId,
+    setUserData,
+    setUserProducts,
+    setCustomers,
+    setTransactions,
+} = userSlice.actions;
 export default userSlice.reducer;

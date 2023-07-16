@@ -1,7 +1,14 @@
 const express = require('express');
 const router = express.Router();
-const { getProducts, getCustomers } = require('../controllers');
+const {
+    getProducts,
+    getCustomers,
+    getTransactions,
+    getGeography,
+} = require('../controllers');
 
 router.route('/products').get(getProducts);
 router.route('/customers').get(getCustomers);
+router.route('/transactions').get(getTransactions);
+router.route('/geography').get(getGeography);
 module.exports = router;

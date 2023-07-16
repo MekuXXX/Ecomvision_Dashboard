@@ -34,4 +34,4 @@ const ProductStatSchema = new mongoose.Schema(
     { timestamps: true }
 );
 
-module.exports = mongoose.model('products_state', ProductStatSchema);
+module.exports = mongoose.model('products_stat', ProductStatSchema);
