@@ -71,7 +71,7 @@ const navItems: NavItemState[] = [
         icon: null,
     },
     {
-        text: "Overwiew",
+        text: "Overview",
         icon: <PointOfSaleOutlined />,
     },
     {

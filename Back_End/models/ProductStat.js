@@ -25,11 +25,13 @@ const ProductStatSchema = new mongoose.Schema(
                 },
             },
         ],
-        dailyDate: {
-            data: String,
-            totalSales: Number,
-            totalUnits: Number,
-        },
+        dailyDate: [
+            {
+                data: String,
+                totalSales: Number,
+                totalUnits: Number,
+            },
+        ],
     },
     { timestamps: true }
 );

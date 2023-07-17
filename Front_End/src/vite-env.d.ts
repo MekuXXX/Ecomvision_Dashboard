@@ -60,10 +60,38 @@ interface transactions {
     createdAt: string;
     updatedAt: string;
 }
+interface overallStats {
+    _id: string;
+    yearlySalesTotal: number;
+    yearlyTotalSoldUnits: number;
+    year: number;
+    monthlyData: {
+        month: string;
+        totalSales: number;
+        totalUnits: number;
+        _id: string;
+    }[];
+    dailyData: {
+        date: string;
+        totalSales: number;
+        totalUnits: number;
+        _id: string;
+    }[];
+    salesByCategory: {
+        shoes: number;
+        clothing: number;
+        accessories: number;
+        misc: number;
+    };
+    createdAt: string;
+    updatedAt: string;
+    __v: number;
+}
 interface userState {
     id: string;
     userData: userData | null;
     userProducts: userProducts[] | null;
     customers: userData[] | null;
     transactions: transactions[] | null;
+    overallStats: overallStats | null;
 }

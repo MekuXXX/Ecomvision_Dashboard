@@ -7,6 +7,7 @@ const initialState: userState = {
     userProducts: null,
     customers: null,
     transactions: null,
+    overallStats: null,
 };
 
 const userSlice = createSlice({
@@ -28,6 +29,9 @@ const userSlice = createSlice({
         setTransactions: (state, action: PayloadAction<transactions[]>) => {
             state.transactions = action.payload;
         },
+        setOverallStats: (state, action: PayloadAction<overallStats>) => {
+            state.overallStats = action.payload;
+        },
     },
 });
 
@@ -37,5 +41,6 @@ export const {
     setUserProducts,
     setCustomers,
     setTransactions,
+    setOverallStats,
 } = userSlice.actions;
 export default userSlice.reducer;

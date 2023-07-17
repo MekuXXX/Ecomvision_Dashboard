@@ -6,22 +6,20 @@ import Navebar from "../../components/Navebar/Navebar";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import { useEffect } from "react";
 import { setUserData } from "../../features/data/dataSlice";
-import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
 import {
     toggleIsMobile,
     toggleIsOpen,
 } from "../../features/sidebar/sidebarSlice";
 import FetchLate from "../../components/fetchLate/FetchLate";
+import { useFetch } from "../../hooks/useFetch";
 const Layout = (): JSX.Element => {
     const dispatch = useDispatch();
     const { id } = useSelector((state: RootState) => state.Data);
     const isNonMobile = useMediaQuery("(min-width: 600px)");
     const { isSidebarOpen } = useSelector((state: RootState) => state.Sidebar);
-    const { data, isLoading, isError } = useQuery(["User", id], () =>
-        axios.get(
-            `${import.meta.env.VITE_REACT_APP_BASE_URL}/general/user/${id}`
-        )
+    const { data, isLoading, isError } = useFetch(
+        ["User", id],
+        `general/user/${id}`
     );
     useEffect(() => {
         dispatch(toggleIsMobile(isNonMobile));
