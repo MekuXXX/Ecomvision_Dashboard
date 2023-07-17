@@ -1,21 +1,17 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo } from "react";
 import { useDispatch } from "react-redux";
-import DatePicker from "react-datepicker";
 import { ResponsiveLine, Serie } from "@nivo/line";
 import { Box, useTheme } from "@mui/material";
 import { useFetch } from "../../hooks/useFetch";
 import { setOverallStats } from "../../features/data/dataSlice";
 import Header from "../../components/Header/Header";
 import FetchLate from "../../components/fetchLate/FetchLate";
-import "react-datepicker/dist/react-datepicker.css";
 type sectionsType = {
-    date: string;
+    month: string;
     totalSales: number;
     totalUnits: number;
 };
-export default function Daily() {
-    const [startDate, setStartDate] = useState<Date>(new Date("2021-02-01"));
-    const [endDate, setEndDate] = useState<Date>(new Date("2021-03-01"));
+export default function Monthly() {
     const dispatch = useDispatch();
     const theme = useTheme();
     const { data, isLoading, isError } = useFetch("OverallStats", "sales");
@@ -24,7 +20,7 @@ export default function Daily() {
     }, [data, dispatch]);
     const [formattedData] = useMemo(() => {
         if (!data) return [];
-        const { dailyData } = data.data;
+        const { monthlyData } = data.data;
         const totalSalesLine: Serie = {
             id: "Total Sales",
             color: theme.palette.secondary?.main,
@@ -35,24 +31,20 @@ export default function Daily() {
             color: theme.palette.secondary?.[600],
             data: [],
         };
-        Object.values(dailyData).forEach((sections) => {
-            const { date, totalSales, totalUnits }: sectionsType =
+        Object.values(monthlyData).forEach((sections) => {
+            const { month, totalSales, totalUnits }: sectionsType =
                 sections as sectionsType;
-            const dateFormatted = new Date(date);
-            if (startDate <= dateFormatted && dateFormatted <= endDate) {
-                const splitDate = date.substring(date.indexOf("-") + 1);
-                totalSalesLine.data.push({
-                    x: splitDate,
-                    y: totalSales,
-                });
-                totalUnitsLine.data.push({
-                    x: splitDate,
-                    y: totalUnits,
-                });
-            }
+            totalSalesLine.data.push({
+                x: month,
+                y: totalSales,
+            });
+            totalUnitsLine.data.push({
+                x: month,
+                y: totalUnits,
+            });
         });
         return [[totalSalesLine, totalUnitsLine]];
-    }, [data, startDate, endDate]); // eslint-disable-line react-hooks/exhaustive-deps
+    }, [data]); // eslint-disable-line react-hooks/exhaustive-deps
     console.log(formattedData);
     if (isLoading || isError)
         return (
@@ -64,29 +56,8 @@ export default function Daily() {
         );
     return (
         <Box p={"2rem"}>
-            <Header title="Daily  Sales" subtitle="Chart of daily sales" />
+            <Header title="Daily  Sales" subtitle="Chart of monthly sales" />
             <Box height={"75vh"}>
-                <Box marginLeft={"auto"}>
-                    <Box display={"inline-flex"}>
-                        <DatePicker
-                            selected={startDate}
-                            onChange={(date: Date) => setStartDate(date)}
-                            selectsStart
-                            startDate={startDate}
-                            endDate={endDate}
-                        />
-                    </Box>
-                    <Box display={"inline-flex"}>
-                        <DatePicker
-                            selected={endDate}
-                            onChange={(date: Date) => setEndDate(date)}
-                            selectsEnd
-                            startDate={startDate}
-                            endDate={endDate}
-                            minDate={startDate}
-                        />
-                    </Box>
-                </Box>
                 <ResponsiveLine
                     data={formattedData as Serie[]}
                     theme={{

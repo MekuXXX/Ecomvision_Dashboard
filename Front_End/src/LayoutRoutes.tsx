@@ -7,6 +7,8 @@ import Transactions from "./scenes/transactions/Transactions";
 import Geography from "./scenes/geography/Geography";
 import Overview from "./scenes/overview/Overview";
 import Daily from "./scenes/daily/Dialy";
+import Monthly from "./scenes/monthy/Monthly";
+import Breakdown from "./scenes/breakdown/BreakDown";
 
 const LayoutRoutes = () => {
     return (
@@ -23,6 +25,8 @@ const LayoutRoutes = () => {
                 <Route path="/geography" element={<Geography />} />
                 <Route path="/overview" element={<Overview />} />
                 <Route path="/daily" element={<Daily />} />
+                <Route path="/monthly" element={<Monthly />} />
+                <Route path="/breakdown" element={<Breakdown />} />
             </Route>
         </Routes>
     );
