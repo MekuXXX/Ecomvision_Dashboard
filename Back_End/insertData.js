@@ -10,6 +10,7 @@ const {
     ProductsStat,
     Transactions,
     OverallStat,
+    AffiliateStat,
 } = require('./models');
 const {
     dataUser,
@@ -17,6 +18,7 @@ const {
     dataProductStat,
     dataTransaction,
     dataOverallStat,
+    dataAffiliateStat,
 } = require('./data');
 
 // Start server
@@ -27,11 +29,12 @@ const startServer = async URI => {
             console.log(`The server is running at port ${PORT}...`);
         });
 
-        User.insertMany(dataUser);
-        Products.insertMany(dataProduct);
-        ProductsStat.insertMany(dataProductStat);
-        Transactions.insertMany(dataTransaction);
-        OverallStat.insertMany(dataOverallStat);
+        // User.insertMany(dataUser);
+        // Products.insertMany(dataProduct);
+        // ProductsStat.insertMany(dataProductStat);
+        // Transactions.insertMany(dataTransaction);
+        // OverallStat.insertMany(dataOverallStat);
+        // AffiliateStat.insertMany(dataAffiliateStat);
     } catch (err) {
         console.log(`There wase error in starting server`);
     }

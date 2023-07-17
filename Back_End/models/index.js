@@ -3,6 +3,7 @@ const Products = require('./Products');
 const ProductsStat = require('./ProductStat');
 const Transactions = require('./Transactions');
 const OverallStat = require('./OverallStat');
+const AffiliateStat = require('./AffiliateStat');
 
 module.exports = {
     User,
@@ -10,4 +11,5 @@ module.exports = {
     ProductsStat,
     Transactions,
     OverallStat,
+    AffiliateStat,
 };

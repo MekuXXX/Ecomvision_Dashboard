@@ -1,5 +1,6 @@
 const express = require('express');
-const { getAdmins } = require('../controllers');
 const router = express.Router();
-router.route('admins', getAdmins);
+const { getAdmins, getUserPerformance } = require('../controllers');
+router.route('/admins').get(getAdmins);
+router.route('/performance/:id').get(getUserPerformance);
 module.exports = router;

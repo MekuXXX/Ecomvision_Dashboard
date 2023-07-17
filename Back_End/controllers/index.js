@@ -1,7 +1,7 @@
 const { getHome } = require('./main');
 const { getUser } = require('./general');
 const { getSales } = require('./sales');
-const { getAdmins } = require('./management');
+const { getAdmins, getUserPerformance } = require('./management');
 const {
     getProducts,
     getCustomers,
@@ -17,4 +17,5 @@ module.exports = {
     getGeography,
     getSales,
     getAdmins,
+    getUserPerformance,
 };

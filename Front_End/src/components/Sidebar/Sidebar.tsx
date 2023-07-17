@@ -91,11 +91,11 @@ const navItems: NavItemState[] = [
         icon: null,
     },
     {
-        text: "Admin",
+        text: "Admins",
         icon: <AdminPanelSettingsOutlined />,
     },
     {
-        text: "Preformance",
+        text: "Performance",
         icon: <TrendingUpOutlined />,
     },
 ];
@@ -124,7 +124,7 @@ const Sidebar = ({ drawerWidth }: propsState) => {
                         width: drawerWidth,
                         "& .MuiDrawer-paper": {
                             color: theme.palette.secondary[200],
-                            backgroundColor: theme.palette.background.alt,
+                            backgroundColor: theme.palette.background?.alt,
                             boxSizing: "border-box",
                             borderWidth: isNonMobile ? 0 : "0.125rem",
                             width: drawerWidth,
