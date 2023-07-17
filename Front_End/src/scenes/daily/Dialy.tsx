@@ -3,11 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store/store";
 import { Box, useTheme } from "@mui/material";
 import FetchLate from "../../components/fetchLate/FetchLate";
-import { Serie } from "@nivo/line";
 import "react-datepicker/dist/react-datepicker.css";
 import { useFetch } from "../../hooks/useFetch";
 import { setOverallStats } from "../../features/data/dataSlice";
-import DatePicker from "react-datepicker";
 import Header from "../../components/Header/Header";
 type sectionsType = {
     date: string;
@@ -26,12 +24,12 @@ export default function Daily() {
     const [formattedData] = useMemo(() => {
         if (!data) return [];
         const { dailyData } = data.data;
-        const totalSalesLine: Serie = {
+        const totalSalesLine = {
             id: "totalSales",
             color: theme.palette.secondary?.main,
             data: [],
         };
-        const totalUnitsLine: Serie = {
+        const totalUnitsLine = {
             id: "totalSales",
             color: theme.palette.secondary?.[600],
             data: [],
