@@ -33,7 +33,7 @@ app.use(notFound);
 app.use(errorHandler);
 
 // Start server
-const startServer = async (URI) => {
+const startServer = async URI => {
     try {
         await connectDB(URI);
         app.listen(PORT, () => {

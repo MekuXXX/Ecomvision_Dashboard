@@ -29,12 +29,13 @@ const startServer = async URI => {
             console.log(`The server is running at port ${PORT}...`);
         });
 
-        // User.insertMany(dataUser);
+        User.insertMany(dataUser);
         // Products.insertMany(dataProduct);
         // ProductsStat.insertMany(dataProductStat);
         // Transactions.insertMany(dataTransaction);
-        OverallStat.insertMany(dataOverallStat);
+        // OverallStat.insertMany(dataOverallStat);
         // AffiliateStat.insertMany(dataAffiliateStat);
+        // console.log(Transactions);
     } catch (err) {
         console.log(`There wase error in starting server`);
     }

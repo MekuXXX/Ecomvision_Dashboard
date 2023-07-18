@@ -10,7 +10,7 @@ export default function Breakdown() {
                 subtitle="Break down of sales by category"
             />
             <Box height={"75vh"}>
-                <BreakdownChart />
+                <BreakdownChart isDashboard={false} />
             </Box>
         </Box>
     );

@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const { off } = require('./Products');
 
 const TransactionSchema = new mongoose.Schema(
     {
@@ -10,7 +9,7 @@ const TransactionSchema = new mongoose.Schema(
             of: Number,
         },
     },
-    { timestamps: true }
+    { timestamps: true },
 );
 
 module.exports = mongoose.model('transactions', TransactionSchema);

@@ -1,14 +1,14 @@
 import { Box, Typography, useTheme } from "@mui/material";
 import { useFetch } from "../../hooks/useFetch";
 import FetchLate from "../fetchLate/FetchLate";
-import { ResponsivePie } from "@nivo/pie";
+import { MayHaveLabel, ResponsivePie } from "@nivo/pie";
 
 type Props = {
     isDashboard: boolean;
 };
 export default function BreakdownChart({ isDashboard = false }: Props) {
-    const { data, isLoading, isError } = useFetch("OverallStats", "sales");
     const theme = useTheme();
+    const { data, isLoading, isError } = useFetch("OverallStats", "sales");
     // eslint-disable-next-line react-hooks/exhaustive-deps
     const colors = [
         theme.palette.secondary?.[500],
@@ -16,17 +16,20 @@ export default function BreakdownChart({ isDashboard = false }: Props) {
         theme.palette.secondary?.[300],
         theme.palette.secondary?.[500],
     ];
-    console.log(data);
-    const formattedData = Object.entries(data?.data?.salesByCategory).map(
-        ([category, sales], i) => ({
-            id: category.charAt(0).toUpperCase() + category.substring(1),
-            label: `${
-                category.charAt(0).toUpperCase() + category.substring(1)
-            }`,
-            value: sales,
-            color: colors[i],
-        })
-    );
+
+    let formattedData;
+    if (data?.data) {
+        formattedData = Object.entries(data?.data?.salesByCategory).map(
+            ([category, sales], i) => ({
+                id: category.charAt(0).toUpperCase() + category.substring(1),
+                label: `${
+                    category.charAt(0).toUpperCase() + category.substring(1)
+                }`,
+                value: sales,
+                color: colors[i],
+            })
+        );
+    }
     if (isLoading || isError)
         return (
             <FetchLate
@@ -44,7 +47,7 @@ export default function BreakdownChart({ isDashboard = false }: Props) {
             position={"relative"}
         >
             <ResponsivePie
-                data={formattedData}
+                data={formattedData as MayHaveLabel[]}
                 theme={{
                     axis: {
                         domain: {
