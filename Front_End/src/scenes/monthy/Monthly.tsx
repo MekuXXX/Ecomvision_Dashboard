@@ -4,7 +4,7 @@ import { ResponsiveLine, Serie } from "@nivo/line";
 import { Box, useTheme } from "@mui/material";
 import { useFetch } from "../../hooks/useFetch";
 import { setOverallStats } from "../../features/data/dataSlice";
-import Header from "../../components/Header/Header";
+import Header from "../../components/header/Header";
 import FetchLate from "../../components/fetchLate/FetchLate";
 type sectionsType = {
     month: string;

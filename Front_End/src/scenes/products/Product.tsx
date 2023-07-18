@@ -10,7 +10,7 @@ import {
     Rating,
     useTheme,
 } from "@mui/material";
-import Header from "../../components/Header/Header";
+import Header from "../../components/header/Header.tsx";
 import FetchLate from "../../components/fetchLate/FetchLate";
 import { useDispatch } from "react-redux";
 import { setUserProducts } from "../../features/data/dataSlice";
@@ -65,7 +65,7 @@ const Product = ({
                         in={isExpanded}
                         timeout={"auto"}
                         unmountOnExit
-                        sx={{ color: theme.palette.neutral[300] }}
+                        sx={{ color: theme.palette.neutral?.[300] }}
                     >
                         <CardContent>
                             <Typography>id: {_id}</Typography>

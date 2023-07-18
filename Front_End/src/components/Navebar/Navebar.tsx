@@ -20,7 +20,7 @@ import {
     Typography,
     useTheme,
 } from "@mui/material";
-import FlexBetween from "../FlexBetween/FlexBetween";
+import FlexBetween from "../fexBetween/FlexBetween";
 import { toggleIsOpen } from "../../features/sidebar/sidebarSlice";
 import { RootState } from "../../store/store";
 import { useState } from "react";

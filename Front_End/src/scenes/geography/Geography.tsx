@@ -1,5 +1,5 @@
 import { Box, useTheme } from "@mui/material";
-import Header from "../../components/Header/Header";
+import Header from "../../components/header/Header";
 import { ResponsiveChoropleth } from "@nivo/geo";
 import { useFetch } from "../../hooks/useFetch";
 import FetchLate from "../../components/fetchLate/FetchLate";

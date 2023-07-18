@@ -1,11 +1,11 @@
 import { Box, useTheme } from "@mui/material";
-import Header from "../../components/Header/Header";
+import Header from "../../components/header/Header";
 import { useFetch } from "../../hooks/useFetch";
 import { useDispatch } from "react-redux";
 
 import { setTransactions } from "../../features/data/dataSlice";
 import { useEffect, useState } from "react";
-import { DataGrid, GridSortModel } from "@mui/x-data-grid";
+import { DataGrid, GridColDef, GridSortModel } from "@mui/x-data-grid";
 import CustomToobar from "../../components/customToolbar/CustomToobar";
 
 export interface someQueryType {
@@ -54,7 +54,7 @@ function Transactions() {
         dispatch(setTransactions(data?.data?.transactions));
     }, [data, dispatch]);
 
-    const columns = [
+    const columns: GridColDef[] = [
         {
             field: "_id",
             headerName: "ID",
@@ -75,14 +75,13 @@ function Transactions() {
             headerName: "# of Products",
             flex: 0.5,
             sortable: false,
-            renderCell: ({ value }: { value: string[] }) => value.length,
+            renderCell: ({ value }) => value.length,
         },
         {
             field: "cost",
             headerName: "Cost",
             flex: 1,
-            renderCell: ({ value }: { value: string }) =>
-                `${Number(value).toFixed(2)}`,
+            renderCell: ({ value }) => `$${Number(value).toFixed(2)}`,
         },
     ];
     return (

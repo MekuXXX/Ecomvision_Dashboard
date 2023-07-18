@@ -33,7 +33,7 @@ import {
     TodayOutlined,
 } from "@mui/icons-material";
 import { RootState } from "../../store/store";
-import FlexBetween from "../FlexBetween/FlexBetween";
+import FlexBetween from "../fexBetween/FlexBetween";
 type propsState = {
     drawerWidth: string;
 };
