@@ -2,11 +2,17 @@ import { Box, useTheme } from "@mui/system";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
 
 type Props = {
+    isDashboard?: boolean;
     isLoading: boolean;
     columns: GridColDef[];
     data: null | undefined;
 };
-export default function OriginalDataGrid({ isLoading, columns, data }: Props) {
+export default function OriginalDataGrid({
+    isDashboard = false,
+    isLoading,
+    columns,
+    data,
+}: Props) {
     const theme = useTheme();
     return (
         <Box
@@ -14,6 +20,7 @@ export default function OriginalDataGrid({ isLoading, columns, data }: Props) {
             sx={{
                 "& .MuiDataGrid-root": {
                     border: "none",
+                    borderRadius: isDashboard ? "5rem" : "",
                 },
                 "& .MuiDataGrid-cell": {
                     borderBottom: "none",
@@ -30,7 +37,9 @@ export default function OriginalDataGrid({ isLoading, columns, data }: Props) {
                     borderTop: "none",
                 },
                 "& .MuiDataGrid-virtualScroller": {
-                    backgroundColor: theme.palette.primary?.light,
+                    backgroundColor: isDashboard
+                        ? theme.palette.background?.alt
+                        : theme.palette.primary?.light,
                 },
                 "& .MuiDataGrid-toolbarContainer .MuiButton-text": {
                     color: `${theme.palette.secondary?.[200]} !important`,

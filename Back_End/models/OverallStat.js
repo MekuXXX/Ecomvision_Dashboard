@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const OverallStatSchema = new mongoose.Schema(
     {
-        tatalCustomers: Number,
+        totalCustomers: Number,
         yearlySalesTotal: Number,
         yearlyTotalSoldUnits: Number,
         year: Number,
@@ -27,7 +27,7 @@ const OverallStatSchema = new mongoose.Schema(
             of: Number,
         },
     },
-    { timestamps: true }
+    { timestamps: true },
 );
 
 module.exports = mongoose.model('overallstats', OverallStatSchema);

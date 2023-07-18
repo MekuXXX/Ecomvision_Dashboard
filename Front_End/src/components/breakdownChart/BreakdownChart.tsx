@@ -132,16 +132,18 @@ export default function BreakdownChart({ isDashboard = false }: Props) {
                 position={"absolute"}
                 top={"50%"}
                 left={"50%"}
+                color={theme.palette.secondary?.[400]}
                 textAlign={"center"}
                 sx={{
                     transform: isDashboard
-                        ? "translate(-75% , -170%)"
+                        ? "translate(-85% , -170%)"
                         : "translate(-50% , -70%)",
                     pointerEvents: "none",
                 }}
             >
                 <Typography variant="h6">
-                    {!isDashboard && "Total: " + data.data.yearlySalesTotal}
+                    {(!isDashboard ? "Total: " : "") +
+                        `$${data.data.yearlySalesTotal}`}
                 </Typography>
             </Box>
         </Box>

@@ -33,7 +33,7 @@ const startServer = async URI => {
         // Products.insertMany(dataProduct);
         // ProductsStat.insertMany(dataProductStat);
         // Transactions.insertMany(dataTransaction);
-        // OverallStat.insertMany(dataOverallStat);
+        OverallStat.insertMany(dataOverallStat);
         // AffiliateStat.insertMany(dataAffiliateStat);
     } catch (err) {
         console.log(`There wase error in starting server`);

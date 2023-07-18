@@ -2,8 +2,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store/store";
 import { Box, useMediaQuery } from "@mui/material";
 import { Outlet } from "react-router-dom";
-import Navebar from "../../components/Navebar/Navebar";
-import Sidebar from "../../components/Sidebar/Sidebar";
+import Navebar from "../../components/navebar/Navebar";
+import Sidebar from "../../components/sidebar/Sidebar";
 import { useEffect } from "react";
 import { setUserData } from "../../features/data/dataSlice";
 import {
