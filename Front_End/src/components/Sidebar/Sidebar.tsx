@@ -33,7 +33,7 @@ import {
     TodayOutlined,
 } from "@mui/icons-material";
 import { RootState } from "../../store/store";
-import FlexBetween from "../fexBetween/FlexBetween";
+import FlexBetween from "../FlexBetween/FlexBetween";
 type propsState = {
     drawerWidth: string;
 };
@@ -123,8 +123,14 @@ const Sidebar = ({ drawerWidth }: propsState) => {
                     sx={{
                         width: drawerWidth,
                         "& .MuiDrawer-paper": {
-                            color: theme.palette.secondary[200],
-                            backgroundColor: theme.palette.background?.alt,
+                            color: (
+                                theme.palette
+                                    .secondary as unknown as ColorTokens
+                            )[200],
+                            backgroundColor: (
+                                theme.palette
+                                    .background as unknown as ColorOptions
+                            ).alt,
                             boxSizing: "border-box",
                             borderWidth: isNonMobile ? 0 : "0.125rem",
                             width: drawerWidth,
@@ -179,15 +185,27 @@ const Sidebar = ({ drawerWidth }: propsState) => {
                                             sx={{
                                                 backgroundColor:
                                                     active === lcText
-                                                        ? theme.palette
-                                                              .secondary[300]
+                                                        ? (
+                                                              theme.palette
+                                                                  .secondary as unknown as ColorTokens
+                                                          )[300]
                                                         : "transparent",
                                                 color:
                                                     active === lcText
-                                                        ? theme.palette
-                                                              .primary[400]
-                                                        : theme.palette
-                                                              .primary[200],
+                                                        ? (
+                                                              theme.palette
+                                                                  .primary as unknown as ColorTokens
+                                                          )[400]
+                                                        : (
+                                                              theme.palette
+                                                                  .primary as unknown as ColorTokens
+                                                          )[200],
+                                                "&:hover": {
+                                                    color: (
+                                                        theme.palette
+                                                            .secondary as unknown as ColorTokens
+                                                    )[300],
+                                                },
                                             }}
                                         >
                                             <ListItemIcon
@@ -234,7 +252,10 @@ const Sidebar = ({ drawerWidth }: propsState) => {
                                         fontWeight={"bold"}
                                         fontSize={"0.9rem"}
                                         sx={{
-                                            color: theme.palette.secondary[100],
+                                            color: (
+                                                theme.palette
+                                                    .secondary as unknown as ColorTokens
+                                            )[100],
                                         }}
                                     >
                                         {userData.name || ""}
@@ -242,7 +263,10 @@ const Sidebar = ({ drawerWidth }: propsState) => {
                                     <Typography
                                         fontSize={"0.8rem"}
                                         sx={{
-                                            color: theme.palette.secondary[200],
+                                            color: (
+                                                theme.palette
+                                                    .secondary as unknown as ColorTokens
+                                            )[200],
                                         }}
                                     >
                                         {userData.occupation || ""}
@@ -250,7 +274,10 @@ const Sidebar = ({ drawerWidth }: propsState) => {
                                 </Box>
                                 <SettingsOutlined
                                     sx={{
-                                        color: theme.palette.secondary[300],
+                                        color: (
+                                            theme.palette
+                                                .secondary as unknown as ColorTokens
+                                        )[300],
                                         fontSize: "1.5rem",
                                     }}
                                 />

@@ -6,9 +6,9 @@ import {
     Select,
     SelectChangeEvent,
 } from "@mui/material";
-import Header from "../../components/header/Header";
+import Header from "../../components/Header/Header";
 import { useState } from "react";
-import OverviewChart from "../../components/overviewChart/OverviewChart";
+import OverviewChart from "../../components/OverviewChart/OverviewChart";
 export type SelectType = "units" | "sales";
 
 export default function Overview() {

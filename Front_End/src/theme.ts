@@ -1,4 +1,11 @@
-export const tokensDark = {
+import { PaletteMode } from "@mui/material";
+export interface TokensDark {
+    grey: ColorTokens;
+    primary: ColorTokens;
+    secondary: ColorTokens;
+}
+// color design tokens export
+export const tokensDark: TokensDark = {
     grey: {
         0: "#ffffff", // manually adjusted
         10: "#f6f6f6", // manually adjusted
@@ -42,24 +49,25 @@ export const tokensDark = {
 };
 
 // function that reverses the color palette
-function reverseTokens(tokensDark: any) {
-    const reversedTokens: any = {};
+function reverseTokens(tokensDark: TokensDark) {
+    const reversedTokens: Partial<TokensDark> = {};
     Object.entries(tokensDark).forEach(([key, val]) => {
-        const keys = Object.keys(val as any) as any;
-        const values = Object.values(val as any) as any;
+        const keys = Object.keys(val);
+        const values = Object.values(val);
         const length = keys.length;
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const reversedObj: any = {};
         for (let i = 0; i < length; i++) {
             reversedObj[keys[i]] = values[length - i - 1];
         }
-        reversedTokens[key] = reversedObj;
+        reversedTokens[key as keyof TokensDark] = reversedObj;
     });
     return reversedTokens;
 }
-export const tokensLight: any = reverseTokens(tokensDark);
+export const tokensLight = reverseTokens(tokensDark);
 
 // mui theme settings
-export const themeSettings = (mode: any) => {
+export const themeSettings = (mode: PaletteMode) => {
     return {
         palette: {
             mode: mode,
@@ -87,7 +95,7 @@ export const themeSettings = (mode: any) => {
                 : {
                       // palette values for light mode
                       primary: {
-                          ...tokensLight?.primary,
+                          ...tokensLight.primary,
                           main: tokensDark.grey[50],
                           light: tokensDark.grey[100],
                       },

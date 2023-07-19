@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import {
     Box,
     Card,
@@ -10,10 +10,8 @@ import {
     Rating,
     useTheme,
 } from "@mui/material";
-import Header from "../../components/header/Header.tsx";
-import FetchLate from "../../components/fetchLate/FetchLate";
-import { useDispatch } from "react-redux";
-import { setUserProducts } from "../../features/data/dataSlice";
+import Header from "../../components/Header/Header.tsx";
+import FetchLate from "../../components/FetchLate/FetchLate.tsx";
 import { useFetch } from "../../hooks/useFetch.tsx";
 const Product = ({
     _id,
@@ -30,14 +28,18 @@ const Product = ({
         <Card
             sx={{
                 backgroundImage: "none",
-                backgroundColor: theme.palette.background.alt,
+                backgroundColor: (
+                    theme.palette.background as unknown as ColorOptions
+                ).alt,
                 borderRadius: "0.55rem",
             }}
         >
             <CardContent>
                 <Typography
                     sx={{ fontSize: 14 }}
-                    color={theme.palette.secondary[700]}
+                    color={
+                        (theme.palette.secondary as unknown as ColorTokens)[700]
+                    }
                     gutterBottom
                 >
                     {category}
@@ -47,7 +49,9 @@ const Product = ({
                 </Typography>
                 <Typography
                     sx={{ mb: "1.5rem" }}
-                    color={theme.palette.secondary[400]}
+                    color={
+                        (theme.palette.secondary as unknown as ColorTokens)[400]
+                    }
                 >
                     ${Number(price).toFixed()}
                 </Typography>
@@ -65,7 +69,12 @@ const Product = ({
                         in={isExpanded}
                         timeout={"auto"}
                         unmountOnExit
-                        sx={{ color: theme.palette.neutral?.[300] }}
+                        sx={{
+                            color: (
+                                theme.palette
+                                    .secondary as unknown as ColorTokens
+                            )[300],
+                        }}
                     >
                         <CardContent>
                             <Typography>id: {_id}</Typography>
@@ -85,15 +94,10 @@ const Product = ({
     );
 };
 const Products = () => {
-    const dispatch = useDispatch();
     const { data, isLoading, isError } = useFetch(
         "Products",
         "client/products"
     );
-
-    useEffect(() => {
-        dispatch(setUserProducts(data?.data));
-    }, [data, dispatch]);
     if (isLoading || isError)
         return (
             <FetchLate

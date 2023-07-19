@@ -1,11 +1,11 @@
 import { useSelector } from "react-redux";
 import { useFetch } from "../../hooks/useFetch";
 import { RootState } from "../../store/store";
-import FetchLate from "../../components/fetchLate/FetchLate";
+import FetchLate from "../../components/FetchLate/FetchLate";
 import { Box } from "@mui/material";
-import Header from "../../components/header/Header";
+import Header from "../../components/Header/Header";
 import { GridColDef } from "@mui/x-data-grid";
-import OriginalDataGrid from "../../components/dataGrid/OriginalDataGrid";
+import OriginalDataGrid from "../../components/DataGrid/OriginalDataGrid";
 
 export default function Performance() {
     const id = useSelector((state: RootState) => state.Data.id);

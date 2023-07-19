@@ -1,8 +1,8 @@
 import { Box, useTheme } from "@mui/material";
-import Header from "../../components/header/Header";
+import Header from "../../components/Header/Header";
 import { ResponsiveChoropleth } from "@nivo/geo";
 import { useFetch } from "../../hooks/useFetch";
-import FetchLate from "../../components/fetchLate/FetchLate";
+import FetchLate from "../../components/FetchLate/FetchLate";
 import { geoMap } from "../../map";
 
 export default function Geography() {
@@ -28,7 +28,9 @@ export default function Geography() {
             <Box
                 height={"75vh"}
                 // IntrinsicAttributes
-                border={`1px solid  ${theme.palette.secondary?.[200]}`}
+                border={`1px solid  ${
+                    (theme.palette.secondary as unknown as ColorTokens)[200]
+                }`}
             >
                 <ResponsiveChoropleth
                     data={data.data}
@@ -36,32 +38,47 @@ export default function Geography() {
                         axis: {
                             domain: {
                                 line: {
-                                    stroke: theme.palette.secondary[200],
+                                    stroke: (
+                                        theme.palette
+                                            .secondary as unknown as ColorTokens
+                                    )[200],
                                 },
                             },
                             legend: {
                                 text: {
-                                    fill: theme.palette.secondary[200],
+                                    fill: (
+                                        theme.palette
+                                            .secondary as unknown as ColorTokens
+                                    )[200],
                                 },
                             },
                             ticks: {
                                 line: {
-                                    stroke: theme.palette.secondary[200],
+                                    stroke: (
+                                        theme.palette
+                                            .secondary as unknown as ColorTokens
+                                    )[200],
                                     strokeWidth: 1,
                                 },
                                 text: {
-                                    fill: theme.palette.secondary[200],
+                                    fill: (
+                                        theme.palette
+                                            .secondary as unknown as ColorTokens
+                                    )[200],
                                 },
                             },
                         },
                         legends: {
                             text: {
-                                fill: theme.palette.secondary[200],
+                                fill: (
+                                    theme.palette
+                                        .secondary as unknown as ColorTokens
+                                )[200],
                             },
                         },
                         tooltip: {
                             container: {
-                                color: theme.palette.primary.main,
+                                color: theme.palette.primary?.main as string,
                             },
                         },
                     }}
@@ -87,15 +104,20 @@ export default function Geography() {
                             itemWidth: 94,
                             itemHeight: 18,
                             itemDirection: "left-to-right",
-                            itemTextColor: theme.palette.secondary[200],
+                            itemTextColor: (
+                                theme.palette
+                                    .secondary as unknown as ColorTokens
+                            )[200],
                             itemOpacity: 0.85,
                             symbolSize: 18,
                             effects: [
                                 {
                                     on: "hover",
                                     style: {
-                                        itemTextColor:
-                                            theme.palette.background.alt,
+                                        itemTextColor: (
+                                            theme.palette
+                                                .background as unknown as ColorOptions
+                                        ).alt,
                                         itemOpacity: 1,
                                     },
                                 },

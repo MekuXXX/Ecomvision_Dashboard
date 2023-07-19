@@ -1,20 +1,20 @@
-import { Box, Typography, useTheme } from "@mui/material";
+import { Box, Typography, useTheme, Theme } from "@mui/material";
 import { useFetch } from "../../hooks/useFetch";
-import FetchLate from "../fetchLate/FetchLate";
+import FetchLate from "../FetchLate/FetchLate";
 import { MayHaveLabel, ResponsivePie } from "@nivo/pie";
 
 type Props = {
     isDashboard: boolean;
 };
 export default function BreakdownChart({ isDashboard = false }: Props) {
-    const theme = useTheme();
+    const theme: Theme = useTheme();
     const { data, isLoading, isError } = useFetch("OverallStats", "sales");
     // eslint-disable-next-line react-hooks/exhaustive-deps
     const colors = [
-        theme.palette.secondary?.[500],
-        theme.palette.secondary?.[300],
-        theme.palette.secondary?.[300],
-        theme.palette.secondary?.[500],
+        (theme.palette.secondary as unknown as ColorTokens)[500],
+        (theme.palette.secondary as unknown as ColorTokens)[300],
+        (theme.palette.secondary as unknown as ColorTokens)[300],
+        (theme.palette.secondary as unknown as ColorTokens)[500],
     ];
 
     let formattedData;
@@ -52,32 +52,47 @@ export default function BreakdownChart({ isDashboard = false }: Props) {
                     axis: {
                         domain: {
                             line: {
-                                stroke: theme.palette.secondary[200],
+                                stroke: (
+                                    theme.palette
+                                        .secondary as unknown as ColorTokens
+                                )[200],
                             },
                         },
                         legend: {
                             text: {
-                                fill: theme.palette.secondary[200],
+                                fill: (
+                                    theme.palette
+                                        .secondary as unknown as ColorTokens
+                                )[200],
                             },
                         },
                         ticks: {
                             line: {
-                                stroke: theme.palette.secondary[200],
+                                stroke: (
+                                    theme.palette
+                                        .secondary as unknown as ColorTokens
+                                )[200],
                                 strokeWidth: 1,
                             },
                             text: {
-                                fill: theme.palette.secondary[200],
+                                fill: (
+                                    theme.palette
+                                        .secondary as unknown as ColorTokens
+                                )[200],
                             },
                         },
                     },
                     legends: {
                         text: {
-                            fill: theme.palette.secondary[200],
+                            fill: (
+                                theme.palette
+                                    .secondary as unknown as ColorTokens
+                            )[200],
                         },
                     },
                     tooltip: {
                         container: {
-                            color: theme.palette.primary.main,
+                            color: theme.palette.primary.main as string,
                         },
                     },
                 }}
@@ -97,7 +112,9 @@ export default function BreakdownChart({ isDashboard = false }: Props) {
                 }}
                 enableArcLinkLabels={!isDashboard}
                 arcLinkLabelsSkipAngle={10}
-                arcLinkLabelsTextColor={theme.palette.secondary?.[200]}
+                arcLinkLabelsTextColor={
+                    (theme.palette.secondary as unknown as ColorTokens)[200]
+                }
                 arcLinkLabelsThickness={2}
                 arcLinkLabelsColor={{ from: "color" }}
                 arcLabelsSkipAngle={10}
@@ -124,7 +141,10 @@ export default function BreakdownChart({ isDashboard = false }: Props) {
                             {
                                 on: "hover",
                                 style: {
-                                    itemTextColor: theme.palette.primary?.[500],
+                                    itemTextColor: (
+                                        theme.palette
+                                            .secondary as unknown as ColorTokens
+                                    )[200],
                                 },
                             },
                         ],
@@ -135,7 +155,7 @@ export default function BreakdownChart({ isDashboard = false }: Props) {
                 position={"absolute"}
                 top={"50%"}
                 left={"50%"}
-                color={theme.palette.secondary?.[400]}
+                color={(theme.palette.secondary as unknown as ColorTokens)[200]}
                 textAlign={"center"}
                 sx={{
                     transform: isDashboard

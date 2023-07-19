@@ -1,12 +1,9 @@
 import { Box, useTheme } from "@mui/material";
-import Header from "../../components/header/Header";
+import Header from "../../components/Header/Header";
 import { useFetch } from "../../hooks/useFetch";
-import { useDispatch } from "react-redux";
-
-import { setTransactions } from "../../features/data/dataSlice";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { DataGrid, GridColDef, GridSortModel } from "@mui/x-data-grid";
-import CustomToobar from "../../components/customToolbar/CustomToobar";
+import CustomToobar from "../../components/CustomToolbar/CustomToobar";
 
 export interface someQueryType {
     sort: GridSortModel;
@@ -28,7 +25,6 @@ function Transactions() {
         page: 0,
         pageSize: 20,
     });
-    const dispatch = useDispatch();
     const theme = useTheme();
 
     const { data, isLoading } = useFetch(
@@ -49,10 +45,6 @@ function Transactions() {
                 : "&sort=" + JSON.stringify(queries.sort[0])
         }`
     );
-
-    useEffect(() => {
-        dispatch(setTransactions(data?.data?.transactions));
-    }, [data, dispatch]);
 
     const columns: GridColDef[] = [
         {
@@ -97,13 +89,21 @@ function Transactions() {
                         borderBottom: "none",
                     },
                     "& .MuiDataGrid-columnHeaders": {
-                        backgroundColor: theme.palette.background?.alt,
-                        color: theme.palette.secondary?.[100],
+                        backgroundColor: (
+                            theme.palette.background as unknown as ColorOptions
+                        ).alt,
+                        color: (
+                            theme.palette.secondary as unknown as ColorTokens
+                        )[100],
                         borderBottom: "none",
                     },
                     "& .MuiDataGrid-footerContainer": {
-                        backgroundColor: theme.palette.background?.alt,
-                        color: theme.palette.secondary?.[100],
+                        backgroundColor: (
+                            theme.palette.background as unknown as ColorOptions
+                        ).alt,
+                        color: (
+                            theme.palette.secondary as unknown as ColorTokens
+                        )[100],
 
                         borderTop: "none",
                     },
@@ -111,7 +111,12 @@ function Transactions() {
                         backgroundColor: theme.palette.primary?.light,
                     },
                     "& .MuiDataGrid-toolbarContainer .MuiButton-text": {
-                        color: `${theme.palette.secondary?.[200]} !important`,
+                        color: `${
+                            (
+                                theme.palette
+                                    .secondary as unknown as ColorTokens
+                            )[200]
+                        } !important`,
                     },
                 }}
             >

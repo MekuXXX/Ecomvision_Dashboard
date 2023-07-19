@@ -16,7 +16,7 @@ export default function OriginalDataGrid({
     const theme = useTheme();
     return (
         <Box
-            height={"75vh"}
+            height={isDashboard ? "100%" : "75vh"}
             sx={{
                 "& .MuiDataGrid-root": {
                     border: "none",

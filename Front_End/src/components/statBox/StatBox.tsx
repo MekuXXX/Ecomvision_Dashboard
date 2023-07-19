@@ -1,6 +1,5 @@
 import { Box, Typography, useTheme } from "@mui/material";
-import FlexBetween from "../fexBetween/FlexBetween";
-
+import FlexBetween from "../FlexBetween/FlexBetween";
 type Props = {
     title: string;
     value: string;
@@ -25,13 +24,17 @@ export default function StatBox({
             justifyContent={"space-between"}
             p={"1.25rem 1rem"}
             flex={"1 1 100%"}
-            bgcolor={theme.palette.background?.alt}
+            bgcolor={(theme.palette.background as unknown as ColorOptions).alt}
             borderRadius={"0.55rem"}
         >
             <FlexBetween>
                 <Typography
                     variant="h6"
-                    sx={{ color: theme.palette.secondary?.[100] }}
+                    sx={{
+                        color: (
+                            theme.palette.secondary as unknown as ColorTokens
+                        )[100],
+                    }}
                 >
                     {title}
                 </Typography>
@@ -40,7 +43,11 @@ export default function StatBox({
             <Typography
                 variant="h3"
                 fontWeight={"600"}
-                sx={{ color: theme.palette.secondary?.[200] }}
+                sx={{
+                    color: (
+                        theme.palette.secondary as unknown as ColorTokens
+                    )[200],
+                }}
             >
                 {value}
             </Typography>

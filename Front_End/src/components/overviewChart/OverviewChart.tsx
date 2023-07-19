@@ -1,10 +1,8 @@
 import { SelectType } from "../../scenes/overview/Overview";
 import { ResponsiveLine, Serie } from "@nivo/line";
 import { useTheme } from "@mui/material";
-import FetchLate from "../fetchLate/FetchLate";
-import { useEffect, useMemo } from "react";
-import { useDispatch } from "react-redux";
-import { setOverallStats } from "../../features/data/dataSlice";
+import FetchLate from "../FetchLate/FetchLate";
+import { useMemo } from "react";
 import { useFetch } from "../../hooks/useFetch";
 
 type Props = {
@@ -17,10 +15,6 @@ type sectionsType = { month: string; totalSales: number; totalUnits: number };
 export default function OverviewChart({ isDashboard = false, view }: Props) {
     const { data, isLoading, isError } = useFetch("OverallStats", "sales");
     const theme = useTheme();
-    const dispatch = useDispatch();
-    useEffect(() => {
-        dispatch(setOverallStats(data?.data));
-    }, [data, dispatch]);
     const [totalSalesLine, totalUnitsLine] = useMemo(() => {
         if (!data) return [];
         const { monthlyData } = data.data;
@@ -31,7 +25,7 @@ export default function OverviewChart({ isDashboard = false, view }: Props) {
         };
         const totalUnitsLine: Serie = {
             id: "Total Units",
-            color: theme.palette.secondary?.[600],
+            color: (theme.palette.secondary as unknown as ColorTokens)[600],
             data: [],
         };
         Object.values(monthlyData).reduce(
@@ -70,32 +64,46 @@ export default function OverviewChart({ isDashboard = false, view }: Props) {
                 axis: {
                     domain: {
                         line: {
-                            stroke: theme.palette.secondary[200],
+                            stroke: (
+                                theme.palette
+                                    .secondary as unknown as ColorTokens
+                            )[200],
                         },
                     },
                     legend: {
                         text: {
-                            fill: theme.palette.secondary[200],
+                            fill: (
+                                theme.palette
+                                    .secondary as unknown as ColorTokens
+                            )[200],
                         },
                     },
                     ticks: {
                         line: {
-                            stroke: theme.palette.secondary[200],
+                            stroke: (
+                                theme.palette
+                                    .secondary as unknown as ColorTokens
+                            )[200],
                             strokeWidth: 1,
                         },
                         text: {
-                            fill: theme.palette.secondary[200],
+                            fill: (
+                                theme.palette
+                                    .secondary as unknown as ColorTokens
+                            )[200],
                         },
                     },
                 },
                 legends: {
                     text: {
-                        fill: theme.palette.secondary[200],
+                        fill: (
+                            theme.palette.secondary as unknown as ColorTokens
+                        )[200],
                     },
                 },
                 tooltip: {
                     container: {
-                        color: theme.palette.primary.main,
+                        color: theme.palette.primary.main as string,
                     },
                 },
             }}

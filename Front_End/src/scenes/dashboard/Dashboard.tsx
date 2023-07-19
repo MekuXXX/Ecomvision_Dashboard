@@ -6,10 +6,10 @@ import {
     useTheme,
 } from "@mui/material";
 import { useFetch } from "../../hooks/useFetch";
-import FetchLate from "../../components/fetchLate/FetchLate";
-import Header from "../../components/header/Header";
+import FetchLate from "../../components/FetchLate/FetchLate";
+import Header from "../../components/Header/Header";
 import { GridColDef } from "@mui/x-data-grid";
-import FlexBetween from "../../components/fexBetween/FlexBetween";
+import FlexBetween from "../../components/FlexBetween/FlexBetween";
 import {
     DownloadOutlined,
     Email,
@@ -17,10 +17,10 @@ import {
     PointOfSale,
     Traffic,
 } from "@mui/icons-material";
-import StatBox from "../../components/statBox/StatBox";
-import OverviewChart from "../../components/overviewChart/OverviewChart";
-import OriginalDataGrid from "../../components/dataGrid/OriginalDataGrid";
-import BreakdownChart from "../../components/breakdownChart/BreakdownChart";
+import StatBox from "../../components/StatBox/StatBox";
+import OverviewChart from "../../components/OverviewChart/OverviewChart";
+import OriginalDataGrid from "../../components/DataGrid/OriginalDataGrid";
+import BreakdownChart from "../../components/BreakdownChart/BreakdownChart";
 
 const Dashboard = (): JSX.Element => {
     const theme = useTheme();
@@ -78,9 +78,15 @@ const Dashboard = (): JSX.Element => {
                     <Button
                         sx={{
                             backgroundColor: theme.palette.secondary?.light,
-                            color: theme.palette.background?.alt,
+                            color: (
+                                theme.palette
+                                    .background as unknown as ColorOptions
+                            ).alt,
                             "&:hover": {
-                                backgroundColor: theme.palette.background?.alt,
+                                backgroundColor: (
+                                    theme.palette
+                                        .background as unknown as ColorOptions
+                                ).alt,
                                 color: theme.palette.secondary?.light,
                             },
                             fontSize: "0.875rem",
@@ -112,7 +118,10 @@ const Dashboard = (): JSX.Element => {
                     icon={
                         <Email
                             sx={{
-                                color: theme.palette.secondary[300],
+                                color: (
+                                    theme.palette
+                                        .secondary as unknown as ColorTokens
+                                )[300],
                                 fontSize: "1.625rem",
                             }}
                         />
@@ -126,7 +135,10 @@ const Dashboard = (): JSX.Element => {
                     icon={
                         <PointOfSale
                             sx={{
-                                color: theme.palette.secondary[300],
+                                color: (
+                                    theme.palette
+                                        .secondary as unknown as ColorTokens
+                                )[300],
                                 fontSize: "1.625rem",
                             }}
                         />
@@ -136,7 +148,11 @@ const Dashboard = (): JSX.Element => {
                     gridColumn={"span 8"}
                     gridRow={"span 2"}
                     borderRadius={"0.55rem"}
-                    sx={{ backgroundColor: theme.palette.background?.alt }}
+                    sx={{
+                        backgroundColor: (
+                            theme.palette.background as unknown as ColorOptions
+                        ).alt,
+                    }}
                 >
                     <OverviewChart view="sales" isDashboard={true} />
                 </Box>
@@ -148,7 +164,10 @@ const Dashboard = (): JSX.Element => {
                     icon={
                         <PersonAdd
                             sx={{
-                                color: theme.palette.secondary[300],
+                                color: (
+                                    theme.palette
+                                        .secondary as unknown as ColorTokens
+                                )[300],
                                 fontSize: "26px",
                             }}
                         />
@@ -162,7 +181,10 @@ const Dashboard = (): JSX.Element => {
                     icon={
                         <Traffic
                             sx={{
-                                color: theme.palette.secondary[300],
+                                color: (
+                                    theme.palette
+                                        .secondary as unknown as ColorTokens
+                                )[300],
                                 fontSize: "26px",
                             }}
                         />
@@ -179,13 +201,21 @@ const Dashboard = (): JSX.Element => {
                 <Box
                     gridColumn={"span 4"}
                     gridRow={"span 3"}
-                    bgcolor={theme.palette.background?.alt}
+                    bgcolor={
+                        (theme.palette.background as unknown as ColorOptions)
+                            .alt
+                    }
                     p={"1.5rem"}
                     borderRadius={"0.55rem"}
                 >
                     <Typography
                         variant="h6"
-                        sx={{ color: theme.palette.secondary?.[100] }}
+                        sx={{
+                            color: (
+                                theme.palette
+                                    .secondary as unknown as ColorTokens
+                            )[100],
+                        }}
                     >
                         Sales by category
                     </Typography>
@@ -193,7 +223,12 @@ const Dashboard = (): JSX.Element => {
                     <Typography
                         p={"0 0 0.6rem"}
                         fontSize={"0.8rem"}
-                        sx={{ color: theme.palette.secondary?.[200] }}
+                        sx={{
+                            color: (
+                                theme.palette
+                                    .secondary as unknown as ColorTokens
+                            )[200],
+                        }}
                     >
                         Breakdown of real states and information via category
                         for revenue made for this year and total sales.

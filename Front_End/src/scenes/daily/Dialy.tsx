@@ -1,12 +1,10 @@
-import { useEffect, useMemo, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useMemo, useState } from "react";
 import DatePicker from "react-datepicker";
 import { ResponsiveLine, Serie } from "@nivo/line";
 import { Box, useTheme } from "@mui/material";
 import { useFetch } from "../../hooks/useFetch";
-import { setOverallStats } from "../../features/data/dataSlice";
-import Header from "../../components/header/Header";
-import FetchLate from "../../components/fetchLate/FetchLate";
+import Header from "../../components/Header/Header";
+import FetchLate from "../../components/FetchLate/FetchLate";
 import "react-datepicker/dist/react-datepicker.css";
 type sectionsType = {
     date: string;
@@ -16,12 +14,8 @@ type sectionsType = {
 export default function Daily() {
     const [startDate, setStartDate] = useState<Date>(new Date("2021-02-01"));
     const [endDate, setEndDate] = useState<Date>(new Date("2021-03-01"));
-    const dispatch = useDispatch();
     const theme = useTheme();
     const { data, isLoading, isError } = useFetch("OverallStats", "sales");
-    useEffect(() => {
-        dispatch(setOverallStats(data?.data));
-    }, [data, dispatch]);
     const [formattedData] = useMemo(() => {
         if (!data) return [];
         const { dailyData } = data.data;
@@ -32,7 +26,7 @@ export default function Daily() {
         };
         const totalUnitsLine: Serie = {
             id: "Total Units",
-            color: theme.palette.secondary?.[600],
+            color: (theme.palette.secondary as unknown as ColorTokens)[600],
             data: [],
         };
         Object.values(dailyData).forEach((sections) => {
@@ -93,32 +87,47 @@ export default function Daily() {
                         axis: {
                             domain: {
                                 line: {
-                                    stroke: theme.palette.secondary[200],
+                                    stroke: (
+                                        theme.palette
+                                            .secondary as unknown as ColorTokens
+                                    )[200],
                                 },
                             },
                             legend: {
                                 text: {
-                                    fill: theme.palette.secondary[200],
+                                    fill: (
+                                        theme.palette
+                                            .secondary as unknown as ColorTokens
+                                    )[200],
                                 },
                             },
                             ticks: {
                                 line: {
-                                    stroke: theme.palette.secondary[200],
+                                    stroke: (
+                                        theme.palette
+                                            .secondary as unknown as ColorTokens
+                                    )[200],
                                     strokeWidth: 1,
                                 },
                                 text: {
-                                    fill: theme.palette.secondary[200],
+                                    fill: (
+                                        theme.palette
+                                            .secondary as unknown as ColorTokens
+                                    )[200],
                                 },
                             },
                         },
                         legends: {
                             text: {
-                                fill: theme.palette.secondary[200],
+                                fill: (
+                                    theme.palette
+                                        .secondary as unknown as ColorTokens
+                                )[200],
                             },
                         },
                         tooltip: {
                             container: {
-                                color: theme.palette.primary.main,
+                                color: theme.palette.primary?.main as string,
                             },
                         },
                     }}

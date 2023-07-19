@@ -1,22 +1,15 @@
-import FetchLate from "../../components/fetchLate/FetchLate.tsx";
+import FetchLate from "../../components/FetchLate/FetchLate.tsx";
 import { useFetch } from "../../hooks/useFetch.tsx";
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { setCustomers } from "../../features/data/dataSlice.ts";
-import OriginalDataGrid from "../../components/dataGrid/OriginalDataGrid.tsx";
-import Header from "../../components/header/Header.tsx";
+import OriginalDataGrid from "../../components/DataGrid/OriginalDataGrid.tsx";
+import Header from "../../components/Header/Header.tsx";
 import { Box } from "@mui/system";
 import { GridColDef } from "@mui/x-data-grid";
 
 function Customers() {
-    const dispatch = useDispatch();
     const { data, isLoading, isError } = useFetch(
         "Customers",
         "client/customers"
     );
-    useEffect(() => {
-        dispatch(setCustomers(data?.data));
-    }, [data, dispatch]);
     const columns: GridColDef[] = [
         {
             field: "_id",

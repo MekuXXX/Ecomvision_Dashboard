@@ -20,7 +20,7 @@ import {
     Typography,
     useTheme,
 } from "@mui/material";
-import FlexBetween from "../fexBetween/FlexBetween";
+import FlexBetween from "../FlexBetween/FlexBetween";
 import { toggleIsOpen } from "../../features/sidebar/sidebarSlice";
 import { RootState } from "../../store/store";
 import { useState } from "react";
@@ -28,7 +28,7 @@ import { useState } from "react";
 const Navebar = (): JSX.Element => {
     const [anchorEl, setAnchorEl] = useState(null);
     const mode = useSelector((state: RootState) => state.Mode.mode);
-    const { userData } = useSelector((state: RootState) => state.Data);
+    const userData = useSelector((state: RootState) => state.Data.userData);
     const theme = useTheme();
     const dispatch = useDispatch();
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -38,7 +38,13 @@ const Navebar = (): JSX.Element => {
     const handleClose = () => setAnchorEl(null);
     const isOpen = Boolean(anchorEl);
     return (
-        <AppBar className="menu-bar" sx={{ position: "static" }}>
+        <AppBar
+            className="menu-bar"
+            sx={{
+                position: "static",
+                background: "none",
+            }}
+        >
             <Toolbar sx={{ justifyContent: "space-between" }}>
                 <FlexBetween>
                     <IconButton onClick={() => dispatch(toggleIsOpen())}>
@@ -46,7 +52,12 @@ const Navebar = (): JSX.Element => {
                     </IconButton>
                     <Box
                         sx={{
-                            backgroundColor: `${theme.palette.background.alt}`,
+                            backgroundColor: `${
+                                (
+                                    theme.palette
+                                        .background as unknown as ColorOptions
+                                ).alt
+                            }`,
                             padding: "0.125rem 0  0 1rem",
                             borderRadius: "0.5rem",
                         }}
@@ -93,7 +104,10 @@ const Navebar = (): JSX.Element => {
                                     fontWeight={"bold"}
                                     fontSize={"0.85rem"}
                                     sx={{
-                                        color: theme.palette.secondary[100],
+                                        color: (
+                                            theme.palette
+                                                .secondary as unknown as ColorTokens
+                                        )[100],
                                     }}
                                 >
                                     {userData?.name || ""}
@@ -101,7 +115,10 @@ const Navebar = (): JSX.Element => {
                                 <Typography
                                     fontSize={"0.75rem"}
                                     sx={{
-                                        color: theme.palette.secondary[200],
+                                        color: (
+                                            theme.palette
+                                                .secondary as unknown as ColorTokens
+                                        )[200],
                                     }}
                                 >
                                     {userData?.occupation || ""}
@@ -110,7 +127,10 @@ const Navebar = (): JSX.Element => {
                             <IconButton onClick={handleClick}>
                                 <ArrowDropDownOutlined
                                     sx={{
-                                        color: theme.palette.secondary[300],
+                                        color: (
+                                            theme.palette
+                                                .secondary as unknown as ColorTokens
+                                        )[300],
                                         fontSize: "1.5rem",
                                     }}
                                 />

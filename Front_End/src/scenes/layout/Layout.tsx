@@ -2,15 +2,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store/store";
 import { Box, useMediaQuery } from "@mui/material";
 import { Outlet } from "react-router-dom";
-import Navebar from "../../components/navebar/Navebar";
-import Sidebar from "../../components/sidebar/Sidebar";
+import Navebar from "../../components/Navebar/Navebar";
+import Sidebar from "../../components/Sidebar/Sidebar";
 import { useEffect } from "react";
 import { setUserData } from "../../features/data/dataSlice";
 import {
     toggleIsMobile,
     toggleIsOpen,
 } from "../../features/sidebar/sidebarSlice";
-import FetchLate from "../../components/fetchLate/FetchLate";
+import FetchLate from "../../components/FetchLate/FetchLate";
 import { useFetch } from "../../hooks/useFetch";
 const Layout = (): JSX.Element => {
     const dispatch = useDispatch();
@@ -37,7 +37,6 @@ const Layout = (): JSX.Element => {
         );
     return (
         <Box
-            className="main-box"
             display={isNonMobile ? "flex" : "block"}
             width={"100%"}
             height={"100%"}

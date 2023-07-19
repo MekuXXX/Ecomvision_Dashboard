@@ -1,8 +1,8 @@
-import FetchLate from "../../components/fetchLate/FetchLate";
+import FetchLate from "../../components/FetchLate/FetchLate";
 import { useFetch } from "../../hooks/useFetch";
-import OriginalDataGrid from "../../components/dataGrid/OriginalDataGrid";
+import OriginalDataGrid from "../../components/DataGrid/OriginalDataGrid";
 import { Box } from "@mui/system";
-import Header from "../../components/header/Header";
+import Header from "../../components/Header/Header";
 import { GridColDef } from "@mui/x-data-grid";
 
 export default function Admins() {
