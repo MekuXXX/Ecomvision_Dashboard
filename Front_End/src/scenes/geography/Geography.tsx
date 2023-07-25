@@ -2,7 +2,7 @@ import { Box, useTheme } from "@mui/material";
 import Header from "../../components/Header/Header";
 import { ResponsiveChoropleth } from "@nivo/geo";
 import { useFetch } from "../../hooks/useFetch";
-import FetchLate from "../../components/FetchLate/FetchLate";
+import FetchLate from "../../components/fetchLate/FetchLate";
 import { geoMap } from "../../map";
 
 export default function Geography() {
