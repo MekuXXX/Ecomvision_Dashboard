@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { useFetch } from "../../hooks/useFetch";
 import { RootState } from "../../store/store";
-import FetchLate from "../../components/FetchLate/FetchLate";
+import FetchLate from "../../components/fetchLate/FetchLate";
 import { Box } from "@mui/material";
 import Header from "../../components/Header/Header";
 import { GridColDef } from "@mui/x-data-grid";
