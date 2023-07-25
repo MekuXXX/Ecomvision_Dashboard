@@ -4,7 +4,7 @@ import { Box, useTheme } from "@mui/material";
 import { useFetch } from "../../hooks/useFetch";
 
 import Header from "../../components/Header/Header";
-import FetchLate from "../../components/FetchLate/FetchLate";
+import FetchLate from "../../components/fetchLate/FetchLate";
 type sectionsType = {
     month: string;
     totalSales: number;
