@@ -1,4 +1,4 @@
-import FetchLate from "../../components/FetchLate/FetchLate.tsx";
+import FetchLate from "../../components/fetchLate/FetchLate.tsx";
 import { useFetch } from "../../hooks/useFetch.tsx";
 import OriginalDataGrid from "../../components/DataGrid/OriginalDataGrid.tsx";
 import Header from "../../components/Header/Header.tsx";
