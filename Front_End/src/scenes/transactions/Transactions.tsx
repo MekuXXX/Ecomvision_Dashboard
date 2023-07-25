@@ -3,7 +3,7 @@ import Header from "../../components/Header/Header";
 import { useFetch } from "../../hooks/useFetch";
 import { useState } from "react";
 import { DataGrid, GridColDef, GridSortModel } from "@mui/x-data-grid";
-import CustomToobar from "../../components/CustomToolbar/CustomToobar";
+import CustomToobar from "../../components/customToolbar/CustomToobar";
 
 export interface someQueryType {
     sort: GridSortModel;
