@@ -1,6 +1,6 @@
 import { Box, Typography, useTheme, Theme } from "@mui/material";
 import { useFetch } from "../../hooks/useFetch";
-import FetchLate from "../FetchLate/FetchLate";
+import FetchLate from "../fetchLate/FetchLate";
 import { MayHaveLabel, ResponsivePie } from "@nivo/pie";
 
 type Props = {
