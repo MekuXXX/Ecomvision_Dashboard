@@ -11,7 +11,7 @@ import {
     useTheme,
 } from "@mui/material";
 import Header from "../../components/Header/Header.tsx";
-import FetchLate from "../../components/FetchLate/FetchLate.tsx";
+import FetchLate from "../../components/fetchLate/FetchLate.tsx";
 import { useFetch } from "../../hooks/useFetch.tsx";
 const Product = ({
     _id,
