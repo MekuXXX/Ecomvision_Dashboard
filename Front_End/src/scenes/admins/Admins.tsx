@@ -1,4 +1,4 @@
-import FetchLate from "../../components/FetchLate/FetchLate";
+import FetchLate from "../../components/fetchLate/FetchLate";
 import { useFetch } from "../../hooks/useFetch";
 import OriginalDataGrid from "../../components/DataGrid/OriginalDataGrid";
 import { Box } from "@mui/system";
