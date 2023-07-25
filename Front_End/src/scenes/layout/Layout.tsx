@@ -10,7 +10,7 @@ import {
     toggleIsMobile,
     toggleIsOpen,
 } from "../../features/sidebar/sidebarSlice";
-import FetchLate from "../../components/FetchLate/FetchLate";
+import FetchLate from "../../components/fetchLate/FetchLate";
 import { useFetch } from "../../hooks/useFetch";
 const Layout = (): JSX.Element => {
     const dispatch = useDispatch();
