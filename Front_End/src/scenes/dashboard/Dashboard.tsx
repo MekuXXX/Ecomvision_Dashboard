@@ -6,7 +6,7 @@ import {
     useTheme,
 } from "@mui/material";
 import { useFetch } from "../../hooks/useFetch";
-import FetchLate from "../../components/FetchLate/FetchLate";
+import FetchLate from "../../components/fetchLate/FetchLate";
 import Header from "../../components/Header/Header";
 import { GridColDef } from "@mui/x-data-grid";
 import FlexBetween from "../../components/FlexBetween/FlexBetween";
@@ -17,10 +17,10 @@ import {
     PointOfSale,
     Traffic,
 } from "@mui/icons-material";
-import StatBox from "../../components/StatBox/StatBox";
-import OverviewChart from "../../components/OverviewChart/OverviewChart";
+import StatBox from "../../components/statBox/StatBox";
+import OverviewChart from "../../components/overviewChart/OverviewChart";
 import OriginalDataGrid from "../../components/DataGrid/OriginalDataGrid";
-import BreakdownChart from "../../components/BreakdownChart/BreakdownChart";
+import BreakdownChart from "../../components/breakdownChart/BreakdownChart";
 
 const Dashboard = (): JSX.Element => {
     const theme = useTheme();
