@@ -8,7 +8,7 @@ import {
 } from "@mui/material";
 import Header from "../../components/Header/Header";
 import { useState } from "react";
-import OverviewChart from "../../components/OverviewChart/OverviewChart";
+import OverviewChart from "../../components/overviewChart/OverviewChart";
 export type SelectType = "units" | "sales";
 
 export default function Overview() {
