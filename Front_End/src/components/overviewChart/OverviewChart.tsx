@@ -1,7 +1,7 @@
 import { SelectType } from "../../scenes/overview/Overview";
 import { ResponsiveLine, Serie } from "@nivo/line";
 import { useTheme } from "@mui/material";
-import FetchLate from "../FetchLate/FetchLate";
+import FetchLate from "../fetchLate/FetchLate";
 import { useMemo } from "react";
 import { useFetch } from "../../hooks/useFetch";
 
